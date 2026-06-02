@@ -5,13 +5,13 @@ status: active (ongoing refinement)
 tags: [Terraform, Terraformer, Terracognita, IaC, AWS, Azure, bash, self-service]
 started: 2026-01
 last_updated: 2026-05
-owner: Wendy Tan
+owner: platform engineer
 ***
 
 # IaC Self-Service Extraction Tool
 
 ## Summary
-A self-service toolchain that allows any subsidiary or agency team to scan their existing cloud
+A self-service toolchain that allows any team to scan their existing cloud
 infrastructure using read-only credentials, extract it as Terraform HCL and state files, then
 organise and customise their IaC. The goal is to make IaC adoption accessible to teams without
 deep Terraform expertise, while ensuring clean, validated output that follows best practices.
@@ -19,7 +19,7 @@ The tool is actively being refined — not a one-off migration task but a reusab
 needs to work reliably across different accounts, providers, and environments.
 
 ## Problem Statement
-Subsidiary teams have existing cloud infrastructure (AWS and Azure) not yet managed as IaC.
+Teams have existing cloud infrastructure (AWS and Azure) not yet managed as IaC.
 Manually writing Terraform for brownfield environments is slow and error-prone. This tool
 automates extraction, handles provider-specific quirks, and produces output that teams can
 immediately validate and use — without needing to understand the internals of Terraformer or
@@ -31,7 +31,6 @@ Terracognita.
 - **Scripting**: Bash
 - **Cloud providers**: AWS (primary), Azure (secondary)
 - **Auth**: AWS SSO profiles / exported temp credentials; Azure Service Principal (read-only)
-- **Region**: ap-southeast-1 (AWS default)
 
 ## Architecture / How It Works
 
@@ -72,8 +71,8 @@ These are known issues with generated HCL that require scripted cleanup:
 A comprehensive AWS CLI inventory script was built separately to:
 - Scan the full AWS environment and list all resources across 25+ service categories
 - Cross-reference against the Terraform AWS provider resource list
-- Identify which resources are GCCI-managed (to exclude) vs. agency-owned (to extract)
-- Uses resource tags (`gccteam: gcci`) to distinguish platform-managed from agency-managed resources
+- Identify which resources are platform-managed (to exclude) vs. team-owned (to extract)
+- Uses resource tags to distinguish platform-managed from team-managed resources
 - Covers: VPC, EC2, S3, Lambda, RDS, ECS, EKS, API Gateway, CloudWatch, CloudTrail, Config,
   SecurityHub, WAF, SNS, SQS, DynamoDB, Cognito, SES, Kinesis, Glue, and more
 
@@ -99,8 +98,8 @@ A comprehensive AWS CLI inventory script was built separately to:
 - Terraformer-generated HCL often contains deprecated attributes requiring provider-version-
   specific cleanup scripts
 - AWS SSO token expiry mid-run requires credential re-export; documented in runbook
-- GCC+ (Singapore government cloud) has GCCI-managed resources in the same AWS account that
-  must be identified and excluded before extraction to avoid capturing platform-managed infra
+- Shared AWS accounts may contain platform-managed resources that must be identified and
+  excluded before extraction to avoid capturing infrastructure not owned by the team
 - `terraform import` native blocks + `-generate-config-out` are the HashiCorp-native
   alternative but variable extraction is clunky — custom post-processing script built to
   parameterise hardcoded values into variables
@@ -114,14 +113,14 @@ A comprehensive AWS CLI inventory script was built separately to:
 | AWS inventory discovery script | ✅ Built — covers 25+ service categories |
 | Drift check / zero-change validation | ✅ Built |
 | Team usage guide / runbook | ✅ Written |
-| Self-service packaging for subsidiaries | 🔄 In progress — ongoing refinement |
+| Self-service packaging | 🔄 In progress — ongoing refinement |
 | Variable parameterisation post-extraction | 🔄 In progress — custom script being refined |
 
 ## Open Questions / TODOs
 - [ ] Make the tool fully self-service — reduce manual steps required from end users
 - [ ] Standardise the credential input UX (SSO vs. temp credential export — consistent flow)
 - [ ] Build a wrapper that sequences all steps (scan → extract → fix → validate) end-to-end
-- [ ] Determine how to handle GCCI-managed resource detection automatically across accounts
+- [ ] Determine how to handle platform-managed resource detection automatically across accounts
 - [ ] Evaluate whether `-generate-config-out` + custom variable extraction script can fully
       replace Terracognita/Terraformer for a HashiCorp-native approach long-term
 
@@ -144,5 +143,3 @@ iac-extraction-tool/
   reads existing cloud infra and generates HCL + tfstate. Broad AWS support (200+ resources).
 - **Terracognita**: Open source, better Azure Service Principal support, iterative exclude
   pattern, outputs HCL + tfstate. Limited to azurerm v3.20.0 resource types.
-- **I2C (Infra to Code)**: API-based IaC extraction tool (formerly CRTS) — evaluated but
-  Terraformer/Terracognita approach chosen for flexibility and local execution.
