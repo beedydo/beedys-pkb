@@ -31,6 +31,7 @@ instructions file.
 
 ## Folder Structure
 
+```
 kb/
 ├── README.md                          ← This file
 ├── context.md                         ← Quick-inject summary for any AI session
@@ -61,6 +62,7 @@ kb/
 │
 └── goals/
     └── current.md                     ← Active learning and career goals
+```
 
 ## Maintenance
 
