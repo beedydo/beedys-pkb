@@ -9,7 +9,7 @@ last_updated: 2026-05
 ## Who I Am
 - Cloud Infrastructure Engineer at GovTech Singapore (6 months, first hands-on infra role)
 - Prior: 6 months AWS Specialist SA, 1 year Ansible Specialist SA at Red Hat
-- Based in Phuket, Thailand
+- Based in Singapore
 - RHCSA + RHCE certified, AWS Solutions Architect Associate certified
 
 ## My Team & Role
