@@ -7,7 +7,7 @@ wendae.tan@gmail.com · +65 9617 4465 · [linkedin.com/in/wendy-the-explorer](ht
 
 ## Professional Summary
 
-Cloud Infrastructure Engineer with hands-on experience in AWS, Terraform, Ansible Automation Platform, and GitLab CI/CD. Built and supported internal platform capabilities including automation workflows, infrastructure-as-code conversion, and asset intelligence platforms. Background includes AWS and Red Hat specialist roles, with experience in technical enablement, prototyping, and delivering solutions that support operational reliability and scale.
+Cloud Infrastructure Engineer with hands-on experience in AWS, Terraform, Ansible Automation Platform, and GitLab CI/CD. Built and supported internal platform capabilities including automation workflows, infrastructure-as-code conversion, asset intelligence platforms, and AI-assisted infrastructure tooling. Background includes AWS and Red Hat specialist roles, with experience in technical enablement, prototyping, and delivering solutions that support operational reliability and scale.
 
 ---
 
@@ -16,13 +16,13 @@ Cloud Infrastructure Engineer with hands-on experience in AWS, Terraform, Ansibl
 ### Cloud Infrastructure Engineer · GovTech
 `Nov 2025 – Present`
 
-- Built and supported internal platform capabilities for automation, infrastructure, and asset tracking
-- Codified AWS infrastructure into Terraform to improve consistency across production and staging environments
-- Managed resource discovery and dependency mapping across VPC, compute, and platform services
-- Designed and maintained reusable Terraform modules to standardise infrastructure patterns and improve deployment consistency
-- Created runbooks and automation playbooks to reduce manual operational overhead and support troubleshooting
+- Own GovSight (formerly AIP), GEM's multi-tenant asset-visibility platform: migrated the data source from Axonius (decommissioned) to Zscaler AEM feeding a Databricks presentation layer, and built AnySource, an ingestion pipeline for sources with no native Zscaler connector
+- Led AEM Data Dictionary field-mapping across 15+ data sources (CrowdStrike, Tenable, Palo Alto, WIZ, and others) and the technical handover of the GovSight build to an incoming engineer, authoring a reusable handover framework
+- Self-built I2C-v2, an AI-assisted Terraform codification tool (Claude API + `terraform plan` as a correctness oracle) that auto-generates Terraform for unmanaged AWS resources, validated at 300+ resources across 3 environments; orchestrated through Ansible Automation Platform for drift management, now being refactored into a standalone production web app
+- Supporting StackOps, GovTech's Elastic + Dynatrace observability engagement, covering ABLR log-review compliance scoping and cross-agency engagement materials
+- Codified AWS infrastructure into Terraform, including reusable modules to standardise patterns and improve deployment consistency across production and staging environments
+- Managed resource discovery and dependency mapping across VPC, compute, and platform services, and created runbooks/automation playbooks to reduce manual operational overhead
 - Worked on automation platform capabilities including execution environment pipelines and governed onboarding workflows
-- Supported integrations that unified data from AWS and other sources for asset visibility and operations
 
 ### Solutions Architect Specialist, Ansible · Red Hat
 `Oct 2024 – Sep 2025`
@@ -79,6 +79,7 @@ Cloud Infrastructure Engineer with hands-on experience in AWS, Terraform, Ansibl
 | Scripting | Bash/Shell, Python |
 | Operating Systems | RHEL, Ubuntu, CentOS |
 | Containerisation | Docker |
+| AI-Assisted Tooling | Claude API, agentic/iterate-until-clean workflows |
 | Other | Git, SQL, Grafana, AWS CLI, Technical Documentation |
 
 ---
@@ -94,6 +95,7 @@ Cloud Infrastructure Engineer with hands-on experience in AWS, Terraform, Ansibl
 
 ## Projects
 
+- **I2C-v2 — AI-Assisted Terraform Codification Tool** — Self-built tool combining the Claude API with `terraform plan` as a correctness oracle to auto-generate Terraform for unmanaged AWS resources; validated at 300+ resources across 3 production environments. Used as a technical talking point in interview processes (AlphaSense, Ollion).
 - **Terraform x Ansible Project** — [github.com/beedydo/terraform-ansible-aws-bastion](https://github.com/beedydo/terraform-ansible-aws-bastion)
 - **Detect, Evaluate and Automate: AIOps with Ansible and OpenShift AI** — [github.com/beedydo/AIOps-for-Error-Remediation](https://github.com/beedydo/AIOps-for-Error-Remediation)
 
